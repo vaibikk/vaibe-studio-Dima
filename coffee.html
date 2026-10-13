@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Кофейня «Зерно»</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f1f5ea;--surface:#fff;--ink:#15251f;--muted:#566a60;--line:#cfdac7;--accent:#2f6f4f;--on-accent:#fff;--hl:#c8e84a;
+--display:'Fraunces',Georgia,serif;--body:'Inter',system-ui,-apple-system,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a16;--surface:#192822;--ink:#eef4e6;--muted:#9bb0a4;--line:#2a3d34;--accent:#c8e84a;--on-accent:#101a16}}
+:root[data-theme="dark"]{--bg:#101a16;--surface:#192822;--ink:#eef4e6;--muted:#9bb0a4;--line:#2a3d34;--accent:#c8e84a;--on-accent:#101a16}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;font-size:17px}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+header{padding:20px 0;font-family:var(--display);font-weight:800;font-size:22px}
+.hero{padding:40px 0 56px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(40px,11vw,68px);line-height:1.02;margin:0 0 18px}
+.hero p{color:var(--muted);font-size:19px;max-width:30em;margin:0 0 26px}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);font-weight:600;text-decoration:none;padding:14px 26px;border-radius:12px}
+a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+section{padding:36px 0;border-top:1px solid var(--line)}
+h2{font-family:var(--display);font-weight:600;font-size:28px;margin:0 0 20px}
+.menu{list-style:none;margin:0;padding:0}
+.menu li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px dashed var(--line)}
+.menu b{font-weight:600}.menu small{display:block;color:var(--muted);font-size:14px}
+.menu span{font-weight:600;white-space:nowrap}
+.info{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px}
+.info p{margin:4px 0}
+footer{padding:28px 0 44px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>Зерно</header>
+<main>
+<div class="hero">
+<h1>Кофе, ради которого стоит выйти пораньше</h1>
+<p>Свежая обжарка, домашняя выпечка и столик у окна. Заходите с 8 утра.</p>
+<a class="btn" href="#menu">Смотреть меню</a>
+</div>
+<section id="menu">
+<h2>Меню</h2>
+<ul class="menu">
+<li><div><b>Эспрессо</b><small>30 мл, насыщенный</small></div><span>150 ₽</span></li>
+<li><div><b>Американо</b><small>200 мл</small></div><span>180 ₽</span></li>
+<li><div><b>Капучино</b><small>200 мл, нежная пенка</small></div><span>230 ₽</span></li>
+<li><div><b>Флэт уайт</b><small>180 мл, двойной эспрессо</small></div><span>260 ₽</span></li>
+<li><div><b>Раф</b><small>300 мл, со сливками и ванилью</small></div><span>290 ₽</span></li>
+<li><div><b>Круассан</b><small>Выпекаем каждое утро</small></div><span>160 ₽</span></li>
+<li><div><b>Чизкейк</b><small>Классический, кусок</small></div><span>280 ₽</span></li>
+</ul>
+</section>
+<section id="visit">
+<h2>Как нас найти</h2>
+<div class="info">
+<p><b>Адрес:</b> ул. Примерная, 10</p>
+<p><b>Часы:</b> ежедневно, 8:00–21:00</p>
+<p><b>Телефон:</b> +7 900 000-00-00</p>
+</div>
+</section>
+</main>
+<footer>Демо-сайт для портфолио. Сделал <a href="https://t.me/vaibechekk" style="color:inherit">Дмитрий Гаврилов</a>.</footer>
+</div>
+</body>
+</html>

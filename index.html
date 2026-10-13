@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Дмитрий Гаврилов — сайты и Telegram-боты</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#eef2f7; --surface:#ffffff; --ink:#14213d; --muted:#55627a; --line:#cdd6e4; --accent:#f2a900; --on-accent:#14213d;
+  --display:'Unbounded','Arial Black',system-ui,sans-serif; --body:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0f1729; --surface:#18233d; --ink:#eef2f7; --muted:#9fb0cc; --line:#2b3a5c; --accent:#f2a900; --on-accent:#14213d;}
+}
+:root[data-theme="dark"]{--bg:#0f1729; --surface:#18233d; --ink:#eef2f7; --muted:#9fb0cc; --line:#2b3a5c;}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.6;font-size:17px}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px}
+header{padding:20px 0;display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:var(--display);font-weight:700;font-size:15px}
+nav a{color:var(--muted);text-decoration:none;margin-left:18px;font-size:15px}
+nav a:hover,nav a:focus-visible{color:var(--ink)}
+.hero{padding:56px 0 64px}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(34px,9vw,60px);line-height:1.08;margin:0 0 20px;letter-spacing:-0.02em}
+.hero p{max-width:34em;color:var(--muted);font-size:19px;margin:0 0 28px}
+.btn{display:inline-block;background:var(--accent);color:var(--on-accent);font-weight:700;text-decoration:none;padding:14px 26px;border-radius:999px}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+h2{font-family:var(--display);font-weight:500;font-size:24px;margin:0 0 24px}
+section{padding:40px 0;border-top:1px solid var(--line)}
+.grid{display:grid;gap:16px}
+@media(min-width:640px){.grid{grid-template-columns:1fr 1fr}.grid .wide{grid-column:span 2}}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.thumb{height:140px;background:linear-gradient(135deg,var(--accent),var(--line));display:flex;align-items:flex-end;padding:14px;font-family:var(--display);font-size:13px;color:var(--on-accent)}
+.card div.t{padding:18px}
+.card h3{margin:0 0 6px;font-size:18px}
+.card p{margin:0 0 10px;color:var(--muted);font-size:15px}
+.card a{color:var(--ink);font-weight:700}
+.skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;padding:0;list-style:none}
+.skills li{border:1px solid var(--line);border-radius:999px;padding:6px 16px;font-size:15px;background:var(--surface)}
+footer{padding:36px 0 48px;color:var(--muted);font-size:14px}
+.contacts a{color:var(--ink);font-weight:700;display:block;margin:6px 0}
+.price{font-family:var(--display);font-weight:700;font-size:22px;margin:4px 0 10px}
+.group{margin:28px 0 14px;font-size:18px;font-weight:700}
+.note{color:var(--muted);font-size:14px;margin-top:16px}
+.promo{display:grid;gap:10px;margin-bottom:8px}
+.promo div{background:var(--accent);color:var(--on-accent);border-radius:14px;padding:14px 18px;font-weight:700}
+.steps{padding-left:20px;color:var(--muted);font-size:15px}
+.bot{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin:12px 0;padding:0 16px}
+.bot summary{cursor:pointer;padding:14px 0;list-style:none}
+.bot summary b{display:block;font-size:17px}
+.bot summary span{color:var(--muted);font-size:14px}
+.bot pre{margin:10px 0 16px;padding:14px;background:var(--bg);border:1px solid var(--line);border-radius:10px;overflow-x:auto;font-size:12.5px;line-height:1.5}
+.copy{background:var(--accent);color:var(--on-accent);border:0;border-radius:999px;padding:8px 18px;font-weight:700;font-family:inherit;cursor:pointer}
+
+body{background-image:radial-gradient(520px 380px at 0% 0%,rgba(242,169,0,.18),transparent),radial-gradient(560px 420px at 100% 35%,rgba(106,47,208,.16),transparent),radial-gradient(520px 380px at 0% 85%,rgba(232,51,127,.12),transparent);background-attachment:fixed}
+.hero{position:relative;margin:8px 0 20px;padding:48px 24px 52px;border-radius:26px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 500'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%2314213d'/%3E%3Cstop offset='.55' stop-color='%235b2bd0'/%3E%3Cstop offset='1' stop-color='%23e8337f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='500' fill='url(%23g)'/%3E%3Ccircle cx='690' cy='80' r='150' fill='%23f2a900' fill-opacity='.28'/%3E%3Ccircle cx='90' cy='470' r='160' fill='%23fff' fill-opacity='.07'/%3E%3Cg fill='none' stroke='%23fff' stroke-opacity='.4' stroke-width='20' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='540,260 480,330 540,400'/%3E%3Cpolyline points='740,260 790,330 740,400'/%3E%3C/g%3E%3Cpolyline points='580,250 640,400 700,250' fill='none' stroke='%23f2a900' stroke-width='34' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M560 460 q20-24 40 0 t40 0 t40 0 t40 0' fill='none' stroke='%23fff' stroke-opacity='.5' stroke-width='8' stroke-linecap='round'/%3E%3Cpath d='M620 70 l7.333333333333333 22 22 7.333333333333333 -22 7.333333333333333 -7.333333333333333 22 -7.333333333333333 -22 -22 -7.333333333333333 22 -7.333333333333333z' fill='%23fff' fill-opacity='0.85'/%3E%3Cpath d='M740 170 l4.0 12 12 4.0 -12 4.0 -4.0 12 -4.0 -12 -12 -4.0 12 -4.0z' fill='%23fff' fill-opacity='0.7'/%3E%3Cpath d='M470 120 l3.3333333333333335 10 10 3.3333333333333335 -10 3.3333333333333335 -3.3333333333333335 10 -3.3333333333333335 -10 -10 -3.3333333333333335 10 -3.3333333333333335z' fill='%23fff' fill-opacity='0.5'/%3E%3C/svg%3E");background-size:cover;background-position:85% center;color:#fff;overflow:hidden}
+.hero h1{color:#fff}.hero p{color:#e8ecff}
+main section{border:1px solid var(--line);border-radius:22px;padding:28px 20px;margin:18px 0;background-color:color-mix(in srgb,var(--surface) 62%,transparent)}
+#work{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='26' height='26'%3E%3Ccircle cx='3' cy='3' r='1.8' fill='%23f2a900' fill-opacity='.4'/%3E%3C/svg%3E")}#price{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30'%3E%3Cpath d='M0 30 L30 0' stroke='%233a5bd9' stroke-opacity='.14' stroke-width='2'/%3E%3C/svg%3E")}#gift{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='110' height='96'%3E%3Ctext x='8' y='32' font-family='monospace' font-size='22' fill='%237a3fe0' fill-opacity='.16'%3E%26lt;/%26gt;%3C/text%3E%3Ctext x='58' y='80' font-family='monospace' font-size='22' fill='%23e8337f' fill-opacity='.16'%3E%7B %7D%3C/text%3E%3C/svg%3E")}#about{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='30'%3E%3Cpath d='M0 15 q20-20 40 0 t40 0' fill='none' stroke='%232fb6a8' stroke-opacity='.2' stroke-width='3'/%3E%3C/svg%3E")}#pay{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='14' fill='none' stroke='%23f2a900' stroke-opacity='.25' stroke-width='3'/%3E%3Ccircle cx='30' cy='30' r='4' fill='%23f2a900' fill-opacity='.25'/%3E%3C/svg%3E")}#channel{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cpath d='M20 12 l4 12 12 4 -12 4 -4 12 -4 -12 -12 -4 12 -4z' fill='%23e8337f' fill-opacity='.2'/%3E%3Cpath d='M66 56 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z' fill='%23f2a900' fill-opacity='.3'/%3E%3C/svg%3E")}#contact{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='30'%3E%3Cpath d='M0 15 q20-20 40 0 t40 0' fill='none' stroke='%232fb6a8' stroke-opacity='.2' stroke-width='3'/%3E%3C/svg%3E")}
+#work .thumb{height:150px;color:#fff;background-size:cover;background-position:center;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+#work .card:nth-child(1) .thumb{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 140'%3E%3Cdefs%3E%3ClinearGradient id='c' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230f3d2e'/%3E%3Cstop offset='1' stop-color='%232f8f63'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='140' fill='url(%23c)'/%3E%3Cellipse cx='60' cy='100' rx='18' ry='11' fill='%23c8e84a' fill-opacity='.75' transform='rotate(-30 60 100)'/%3E%3Cellipse cx='340' cy='36' rx='16' ry='10' fill='%23c8e84a' fill-opacity='.6' transform='rotate(25 340 36)'/%3E%3Cellipse cx='95' cy='40' rx='12' ry='7' fill='%23c8e84a' fill-opacity='.5' transform='rotate(40 95 40)'/%3E%3Crect x='150' y='58' width='100' height='62' rx='18' fill='%23fff' fill-opacity='.92'/%3E%3Cpath d='M250 72 h16 a14 14 0 0 1 0 28 h-16' fill='none' stroke='%23fff' stroke-opacity='.92' stroke-width='8'/%3E%3Cpath d='M180 46 q-10-12 0-24 M205 46 q-10-12 0-24 M230 46 q-10-12 0-24' stroke='%23fff' stroke-opacity='.65' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}#work .card:nth-child(2) .thumb{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 140'%3E%3Cdefs%3E%3ClinearGradient id='t' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%231d1d6e'/%3E%3Cstop offset='1' stop-color='%235a5af7'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='140' fill='url(%23t)'/%3E%3Ctext x='36' y='62' font-size='40' font-weight='800' fill='%23fff' fill-opacity='.45' font-family='sans-serif'%3EAa%3C/text%3E%3Ctext x='290' y='110' font-size='34' font-weight='800' fill='%23ffd23f' fill-opacity='.8' font-family='sans-serif'%3EABC%3C/text%3E%3Cpath d='M200 44 q-50-14 -90 4 v62 q40-18 90-4z' fill='%23fff' fill-opacity='.95'/%3E%3Cpath d='M200 44 q50-14 90 4 v62 q-40-18 -90-4z' fill='%23ffd23f'/%3E%3Cpath d='M200 44 v62' stroke='%231d1d6e' stroke-width='3'/%3E%3C/svg%3E")}#work .card:nth-child(3) .thumb{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 140'%3E%3Cdefs%3E%3ClinearGradient id='b' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%230a4f55'/%3E%3Cstop offset='1' stop-color='%231fd1c1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='400' height='140' fill='url(%23b)'/%3E%3Crect x='125' y='26' width='150' height='100' rx='14' fill='%23fff' fill-opacity='.16' stroke='%23fff' stroke-opacity='.8' stroke-width='3'/%3E%3Crect x='125' y='26' width='150' height='24' rx='12' fill='%23fff' fill-opacity='.9'/%3E%3Crect x='140' y='62' width='22' height='16' rx='4' fill='%23fff' fill-opacity='0.35'/%3E%3Crect x='170' y='62' width='22' height='16' rx='4' fill='%23fff' fill-opacity='0.35'/%3E%3Crect x='200' y='62' width='22' height='16' rx='4' fill='%23fff' fill-opacity='0.35'/%3E%3Crect x='230' y='62' width='22' height='16' rx='4' fill='%23fff' fill-opacity='0.35'/%3E%3Crect x='140' y='86' width='22' height='16' rx='4' fill='%23fff' fill-opacity='0.35'/%3E%3Crect x='170' y='86' width='22' height='16' rx='4' fill='%23fff' fill-opacity='0.35'/%3E%3Crect x='200' y='86' width='22' height='16' rx='4' fill='%23fff' fill-opacity='0.35'/%3E%3Crect x='230' y='86' width='22' height='16' rx='4' fill='%23fff' fill-opacity='0.95'/%3E%3Crect x='140' y='110' width='22' height='16' rx='4' fill='%23fff' fill-opacity='0.35'/%3E%3Crect x='170' y='110' width='22' height='16' rx='4' fill='%23fff' fill-opacity='0.35'/%3E%3Crect x='200' y='110' width='22' height='16' rx='4' fill='%23fff' fill-opacity='0.35'/%3E%3Crect x='230' y='110' width='22' height='16' rx='4' fill='%23fff' fill-opacity='0.35'/%3E%3Ccircle cx='60' cy='90' r='26' fill='none' stroke='%23fff' stroke-opacity='.5' stroke-width='5'/%3E%3Cpath d='M60 74 v16 l11 7' stroke='%23fff' stroke-opacity='.7' stroke-width='5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="logo">Дмитрий Гаврилов</span>
+    <nav><a href="#work">Работы</a><a href="#about">Обо мне</a><a href="#contact">Контакты</a></nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Создаю сайты и Telegram-боты для бизнеса</h1>
+      <p>Понятные сайты, лендинги и боты, которые приводят клиентов и экономят время. От идеи до запуска за несколько дней.</p>
+      <a class="btn" href="#contact">Заказать проект</a>
+    </div>
+
+    <section id="work">
+      <h2>Работы</h2>
+      <div class="grid">
+        <article class="card"><div class="thumb">Лендинг</div><div class="t"><h3>Сайт кофейни</h3><p>Меню, адрес и часы работы на одной странице.</p><a href="coffee.html">Смотреть сайт</a></div></article>
+        <article class="card"><div class="thumb">Визитка</div><div class="t"><h3>Сайт репетитора</h3><p>Услуги, цены и запись на пробное занятие.</p><a href="tutor.html">Смотреть сайт</a></div></article>
+        <article class="card wide"><div class="thumb">Онлайн-запись</div><div class="t"><h3>Сайт для записи клиентов</h3><p>Выбор услуги, дня и свободного времени на одной странице.</p><a href="zapis.html">Смотреть сайт</a></div></article>
+        
+      </div>
+    </section>
+
+    <section id="gift">
+      <h2>Бесплатные боты в подарок</h2>
+      <p>Восемь готовых шаблонов Telegram-ботов. Берите, меняйте тексты под себя и пользуйтесь.</p>
+      <p><b>🎁 При покупке любой услуги вы получаете в подарок 1 бесплатного Telegram-бота на выбор из этого раздела.</b></p>
+      <ol class="steps"><li>Создайте бота у @BotFather и получите токен.</li><li>Скопируйте код нужного бота ниже.</li><li>Замените тексты на свои и запустите на Python.</li></ol>
+      <details class="bot"><summary><b>Бот-визитка</b><span>Меню с услугами, ценами, контактами и кнопкой на сайт.</span></summary>
+<button class="copy" type="button">Скопировать код</button>
+<pre><code>import os
+from telegram import InlineKeyboardButton as Btn, InlineKeyboardMarkup as Markup, Update
+from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
+
+TOKEN = os.environ[&quot;BOT_TOKEN&quot;]          # токен от @BotFather
+SITE = &quot;https://claude.ai/artifact/7J9Q3TnWsSTf7nLmX9Uaae&quot;  # замени на адрес своего сайта
+HELLO = &quot;👋 Привет! Это бот студии «Вайбкодинг студия». Выбери раздел:&quot;
+
+SECTIONS = {
+    &quot;services&quot;: (&quot;💼 Услуги&quot;, &quot;Делаю:\n• сайты и лендинги\n• Telegram-ботов\n• мини-боты за 1–2 дня&quot;),
+    &quot;prices&quot;: (&quot;💰 Цены&quot;, &quot;Лендинг от 2 500 ₽\nСайт-визитка от 4 000 ₽\nБот для записи от 4 000 ₽\nМини-боты 200–500 ₽\n\n−50% на первый заказ&quot;),
+    &quot;contacts&quot;: (&quot;📩 Контакты&quot;, &quot;Telegram: @vaibechekk\nКанал: t.me/codebyvibbe\nПочта: dimagavrilovd7676@gmail.com&quot;),
+}
+
+def menu():
+    rows = [[Btn(title, callback_data=key)] for key, (title, _) in SECTIONS.items()]
+    rows.append([Btn(&quot;🌐 Наш сайт&quot;, url=SITE)])
+    return Markup(rows)
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(HELLO, reply_markup=menu())
+
+async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    q = update.callback_query
+    await q.answer()
+    if q.data == &quot;back&quot;:
+        await q.edit_message_text(HELLO, reply_markup=menu())
+    else:
+        title, text = SECTIONS[q.data]
+        back = Markup([[Btn(&quot;⬅️ Назад&quot;, callback_data=&quot;back&quot;)]])
+        await q.edit_message_text(f&quot;{title}\n\n{text}&quot;, reply_markup=back)
+
+app = Application.builder().token(TOKEN).build()
+app.add_handler(CommandHandler(&quot;start&quot;, start))
+app.add_handler(CallbackQueryHandler(button))
+app.run_polling()
+</code></pre></details>
+<details class="bot"><summary><b>Мини-FAQ бот</b><span>Ответы на частые вопросы по кнопкам.</span></summary>
+<button class="copy" type="button">Скопировать код</button>
+<pre><code>import os
+from telegram import InlineKeyboardButton as Btn, InlineKeyboardMarkup as Markup, Update
+from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
+
+TOKEN = os.environ[&quot;BOT_TOKEN&quot;]
+
+FAQ = [  # (вопрос, ответ) — поменяй на свои
+    (&quot;Сколько стоит сайт?&quot;, &quot;Лендинг от 2 500 ₽, сайт-визитка от 4 000 ₽.&quot;),
+    (&quot;Как быстро сделаете?&quot;, &quot;Лендинг за 2–3 дня, бота за 1–2 дня.&quot;),
+    (&quot;Как оплатить?&quot;, &quot;Предоплата 50%, остальное после сдачи работы.&quot;),
+    (&quot;Будут ли правки?&quot;, &quot;Да, 2 раунда правок входят в стоимость.&quot;),
+    (&quot;Как заказать?&quot;, &quot;Напишите @vaibechekk, и я отвечу в течение дня.&quot;),
+]
+
+def menu():
+    return Markup([[Btn(q, callback_data=str(i))] for i, (q, _) in enumerate(FAQ)])
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(&quot;Частые вопросы. Выберите:&quot;, reply_markup=menu())
+
+async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    q = update.callback_query
+    await q.answer()
+    if q.data == &quot;back&quot;:
+        await q.edit_message_text(&quot;Частые вопросы. Выберите:&quot;, reply_markup=menu())
+    else:
+        question, answer = FAQ[int(q.data)]
+        back = Markup([[Btn(&quot;⬅️ К вопросам&quot;, callback_data=&quot;back&quot;)]])
+        await q.edit_message_text(f&quot;❓ {question}\n\n{answer}&quot;, reply_markup=back)
+
+app = Application.builder().token(TOKEN).build()
+app.add_handler(CommandHandler(&quot;start&quot;, start))
+app.add_handler(CallbackQueryHandler(button))
+app.run_polling()
+</code></pre></details>
+<details class="bot"><summary><b>Бот-предсказатель</b><span>Случайные предсказания и советы по кнопке.</span></summary>
+<button class="copy" type="button">Скопировать код</button>
+<pre><code>import os, random
+from telegram import InlineKeyboardButton as Btn, InlineKeyboardMarkup as Markup, Update
+from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
+
+TOKEN = os.environ[&quot;BOT_TOKEN&quot;]
+
+PREDICTIONS = [  # добавляй свои
+    &quot;Сегодня удачный день, чтобы начать то, что откладывал(а). 🚀&quot;,
+    &quot;Маленький шаг сегодня лучше большого плана на потом.&quot;,
+    &quot;Тебя ждёт приятная неожиданность. Просто будь на связи. ✨&quot;,
+    &quot;Ошибка сегодня станет уроком, а урок завтра станет навыком.&quot;,
+    &quot;Кто-то думает о тебе тепло. Напиши первым(ой). 💬&quot;,
+    &quot;Лучшее время для идеи: прямо сейчас. Запиши её.&quot;,
+    &quot;Не сравнивай свой первый шаг с чужим сотым.&quot;,
+    &quot;Сегодня стоит отдохнуть, и это тоже работа. ☕&quot;,
+    &quot;Удача любит тех, кто пробует. Попробуй.&quot;,
+    &quot;Деньги придут через дело, которое ты делаешь с удовольствием. 💰&quot;,
+]
+
+KB = Markup([[Btn(&quot;🔮 Получить предсказание&quot;, callback_data=&quot;go&quot;)]])
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(&quot;🔮 Нажми кнопку и узнай, что тебя ждёт.&quot;, reply_markup=KB)
+
+async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    q = update.callback_query
+    await q.answer()
+    again = Markup([[Btn(&quot;🔮 Ещё одно&quot;, callback_data=&quot;go&quot;)]])
+    await q.edit_message_text(random.choice(PREDICTIONS), reply_markup=again)
+
+app = Application.builder().token(TOKEN).build()
+app.add_handler(CommandHandler(&quot;start&quot;, start))
+app.add_handler(CallbackQueryHandler(button))
+app.run_polling()
+</code></pre></details>
+<details class="bot"><summary><b>Бот-автоответчик</b><span>Отвечает клиентам и пересылает их сообщения вам.</span></summary>
+<button class="copy" type="button">Скопировать код</button>
+<pre><code>import os
+from telegram import Update
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+
+TOKEN = os.environ[&quot;BOT_TOKEN&quot;]
+OWNER_ID = int(os.environ.get(&quot;OWNER_ID&quot;, &quot;0&quot;))  # твой Telegram ID (узнать у @userinfobot), чтобы получать сообщения клиентов
+
+AUTO_TEXT = (&quot;Спасибо за сообщение! 🙌\n&quot;
+             &quot;Я сейчас не на связи, но отвечу в течение рабочего дня (пн–пт, 10:00–19:00).&quot;)
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(&quot;Здравствуйте! Напишите, что вам нужно, и я отвечу как только смогу.&quot;)
+
+async def reply(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(AUTO_TEXT)
+    if OWNER_ID:
+        await context.bot.forward_message(chat_id=OWNER_ID,
+                                          from_chat_id=update.effective_chat.id,
+                                          message_id=update.message.message_id)
+
+app = Application.builder().token(TOKEN).build()
+app.add_handler(CommandHandler(&quot;start&quot;, start))
+app.add_handler(MessageHandler(filters.TEXT &amp; ~filters.COMMAND, reply))
+app.run_polling()
+</code></pre></details>
+
+      <details class="bot"><summary><b>Бот-генератор паролей</b><span>Создаёт надёжный пароль на 8, 12 или 16 символов.</span></summary>
+<button class="copy" type="button">Скопировать код</button>
+<pre><code>import os, secrets, string
+from telegram import InlineKeyboardButton as Btn, InlineKeyboardMarkup as Markup, Update
+from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
+
+TOKEN = os.environ[&quot;BOT_TOKEN&quot;]
+CHARS = string.ascii_letters + string.digits + &quot;!@#$%&amp;*?&quot;
+KB = Markup([[Btn(f&quot;{n} символов&quot;, callback_data=str(n)) for n in (8, 12, 16)]])
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(&quot;🔐 Какой длины сделать пароль?&quot;, reply_markup=KB)
+
+async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    q = update.callback_query
+    await q.answer()
+    password = &quot;&quot;.join(secrets.choice(CHARS) for _ in range(int(q.data)))
+    await q.message.reply_text(f&quot;Твой пароль:\n`{password}`\n\nНажми на него, чтобы скопировать.&quot;,
+                               parse_mode=&quot;Markdown&quot;, reply_markup=KB)
+
+app = Application.builder().token(TOKEN).build()
+app.add_handler(CommandHandler(&quot;start&quot;, start))
+app.add_handler(CallbackQueryHandler(button))
+app.run_polling()
+</code></pre></details>
+<details class="bot"><summary><b>Бот «Монетка и кубик»</b><span>Орёл или решка и бросок кубика для споров и игр.</span></summary>
+<button class="copy" type="button">Скопировать код</button>
+<pre><code>import os, random
+from telegram import InlineKeyboardButton as Btn, InlineKeyboardMarkup as Markup, Update
+from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
+
+TOKEN = os.environ[&quot;BOT_TOKEN&quot;]
+KB = Markup([[Btn(&quot;🪙 Монетка&quot;, callback_data=&quot;coin&quot;), Btn(&quot;🎲 Кубик&quot;, callback_data=&quot;dice&quot;)]])
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(&quot;Что бросаем?&quot;, reply_markup=KB)
+
+async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    q = update.callback_query
+    await q.answer()
+    if q.data == &quot;coin&quot;:
+        text = &quot;🪙 &quot; + random.choice([&quot;Орёл&quot;, &quot;Решка&quot;])
+    else:
+        text = f&quot;🎲 Выпало: {random.randint(1, 6)}&quot;
+    await q.message.reply_text(text, reply_markup=KB)
+
+app = Application.builder().token(TOKEN).build()
+app.add_handler(CommandHandler(&quot;start&quot;, start))
+app.add_handler(CallbackQueryHandler(button))
+app.run_polling()
+</code></pre></details>
+<details class="bot"><summary><b>Бот-калькулятор скидки</b><span>Считает цену со скидкой и экономию.</span></summary>
+<button class="copy" type="button">Скопировать код</button>
+<pre><code>import os, re
+from telegram import Update
+from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
+
+TOKEN = os.environ[&quot;BOT_TOKEN&quot;]
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(
+        &quot;🏷 Посчитаю цену со скидкой.\nНапиши цену и процент через пробел.\n\nНапример: 2500 20&quot;)
+
+async def calc(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    nums = re.findall(r&quot;\d+(?:[.,]\d+)?&quot;, update.message.text)
+    if len(nums) != 2:
+        await update.message.reply_text(&quot;Нужно два числа: цена и процент. Например: 2500 20&quot;)
+        return
+    price, percent = (float(n.replace(&quot;,&quot;, &quot;.&quot;)) for n in nums)
+    saved = price * percent / 100
+    await update.message.reply_text(
+        f&quot;Цена со скидкой: {price - saved:.2f}\nЭкономия: {saved:.2f}&quot;)
+
+app = Application.builder().token(TOKEN).build()
+app.add_handler(CommandHandler(&quot;start&quot;, start))
+app.add_handler(MessageHandler(filters.TEXT &amp; ~filters.COMMAND, calc))
+app.run_polling()
+</code></pre></details>
+<details class="bot"><summary><b>Бот-комплименты</b><span>Случайный тёплый комплимент по кнопке.</span></summary>
+<button class="copy" type="button">Скопировать код</button>
+<pre><code>import os, random
+from telegram import InlineKeyboardButton as Btn, InlineKeyboardMarkup as Markup, Update
+from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
+
+TOKEN = os.environ[&quot;BOT_TOKEN&quot;]
+COMPLIMENTS = [  # добавляй свои
+    &quot;У тебя отлично получается то, за что ты берёшься. 💪&quot;,
+    &quot;С тобой легко и приятно общаться. 😊&quot;,
+    &quot;Ты умеешь удивлять, это редкий талант. ✨&quot;,
+    &quot;Твоя идея сегодня может стать чем-то большим. 🚀&quot;,
+    &quot;Ты сильнее, чем думаешь.&quot;,
+    &quot;Твоя улыбка поднимает настроение окружающим. 😄&quot;,
+    &quot;Ты молодец уже за то, что продолжаешь пробовать.&quot;,
+    &quot;У тебя хороший вкус и чувство стиля. 👌&quot;,
+]
+KB = Markup([[Btn(&quot;💌 Получить комплимент&quot;, callback_data=&quot;go&quot;)]])
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text(&quot;Нужно немного тепла? Жми кнопку.&quot;, reply_markup=KB)
+
+async def button(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    q = update.callback_query
+    await q.answer()
+    await q.message.reply_text(random.choice(COMPLIMENTS), reply_markup=KB)
+
+app = Application.builder().token(TOKEN).build()
+app.add_handler(CommandHandler(&quot;start&quot;, start))
+app.add_handler(CallbackQueryHandler(button))
+app.run_polling()
+</code></pre></details>
+<p class="note">Нужен бот под ваш бизнес с оплатой, записью или админкой? <a href="#contact">Напишите мне</a>.</p>
+    </section>
+
+    <section id="price">
+      <h2>Цены</h2>
+      <div class="promo"><div>−50% на первый заказ</div><div>−30% при заказе от 2 услуг</div><div>−25% при 5 и более покупках</div><div>🎁 При покупке 1 бесплатный бот в подарок</div></div>
+      <div class="group">Сайты</div>
+      <div class="grid">
+        <article class="card"><div class="t"><h3>Лендинг</h3><div class="price">от 2 500 ₽</div><p>Одна страница: предложение, преимущества, форма заявки.</p></div></article>
+        <article class="card"><div class="t"><h3>Сайт-визитка</h3><div class="price">от 4 000 ₽</div><p>3–5 разделов: услуги, о компании, контакты, карта.</p></div></article>
+        <article class="card wide"><div class="t"><h3>Многостраничный сайт</h3><div class="price">от 8 000 ₽</div><p>Каталог, блог или портфолио, несколько страниц и формы.</p></div></article>
+      </div>
+      <div class="group">Telegram-боты</div>
+      <div class="grid">
+        <article class="card"><div class="t"><h3>Бот-справочник</h3><div class="price">от 2 000 ₽</div><p>Меню, ответы на частые вопросы, контакты.</p></div></article>
+        <article class="card"><div class="t"><h3>Бот для записи</h3><div class="price">от 4 000 ₽</div><p>Клиент выбирает услугу и время, вы получаете заявку.</p></div></article>
+        <article class="card wide"><div class="t"><h3>Бот с оплатой и админкой</h3><div class="price">от 8 000 ₽</div><p>Приём платежей, рассылки и управление из Telegram.</p></div></article>
+      </div>
+      <div class="group">Мини-боты, готовы за 1–2 дня</div>
+      <div class="grid">
+        <article class="card"><div class="t"><h3>Бот-выбиратель</h3><div class="price">200 ₽</div><p>Случайно выбирает вариант: что съесть, куда пойти, кто платит.</p></div></article>
+        <article class="card"><div class="t"><h3>Бот-викторина</h3><div class="price">300 ₽</div><p>5 вопросов с подсчётом баллов, для канала или чата.</p></div></article>
+        <article class="card"><div class="t"><h3>Бот-каталог</h3><div class="price">400 ₽</div><p>Товары с ценами и описанием, кнопка «Заказать».</p></div></article>
+        <article class="card"><div class="t"><h3>Бот для заявок</h3><div class="price">500 ₽</div><p>Собирает имя, контакт и запрос, и присылает вам.</p></div></article>
+        
+      </div>
+      <p class="note">Скидки не суммируются, действует наибольшая. Точная цена зависит от задачи. Напишите, и я назову стоимость и срок бесплатно.</p>
+    </section>
+
+    <section id="about">
+      <h2>Обо мне</h2>
+      <p>Меня зовут Дмитрий. Я создаю сайты и Telegram-ботов для бизнеса: слушаю вашу задачу, делаю первую версию и довожу до результата, который вам нужен. Работаю быстро и понятно, без лишней сложности.</p>
+      <ul class="skills"><li>Сайты для бизнеса</li><li>Лендинги</li><li>Telegram-боты</li><li>Адаптив для телефонов</li></ul>
+    </section>
+
+    <section id="channel">
+      <h2>Мой Telegram-канал</h2>
+      <p>Я веду открыто: показываю будни, новые работы, планы и то, как учусь делать сайты и ботов с нуля. Подписывайтесь и смотрите, как это происходит.</p>
+      <ul class="skills"><li>Будни</li><li>Работы</li><li>Планы</li><li>Обучение</li></ul>
+      <p><a class="btn" href="https://t.me/codebyvibbe">Читать канал</a></p>
+    </section>
+
+    <section id="pay">
+      <h2>Оплата</h2>
+      <div class="card"><div class="t">
+        <p>Перевод на карту Сбербанка:</p>
+        <div class="price" style="user-select:all">2202 2088 8849 3161</div>
+        <p>Или по номеру телефона через СБП:</p>
+        <div class="price" style="user-select:all">+7 926 289-17-07</div>
+        <p>Получатель: Дмитрий Г. После оплаты пришлите чек в Telegram <a href="https://t.me/vaibechekk">@vaibechekk</a>.</p>
+        <p>Если вам понравились мои работы, буду искренне благодарен за добровольную поддержку на продвижение канала и дальнейшее развитие. Это очень мотивирует. Спасибо! 🙏</p>
+      </div></div>
+    </section>
+
+    <section id="contact">
+      <h2>Контакты</h2>
+      <p>Расскажите, что нужно: сайт или бот. Я отвечу в течение дня.</p>
+      <div class="contacts">
+        <a href="mailto:dimagavrilovd7676@gmail.com">dimagavrilovd7676@gmail.com</a>
+        <a href="https://t.me/vaibechekk">Telegram: @vaibechekk</a>
+        <a href="https://t.me/codebyvibbe">Канал: t.me/codebyvibbe</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 Дмитрий Гаврилов<br>Сайт создал Дмитрий. Подписывайтесь на канал создателя: <a href="https://t.me/codebyvibbe" style="color:inherit;font-weight:700">t.me/codebyvibbe</a></footer>
+</div>
+<script>
+document.querySelectorAll('.bot').forEach(function(d){
+  var b=d.querySelector('.copy'),c=d.querySelector('code');
+  b.addEventListener('click',function(){
+    var done=function(){b.textContent='Скопировано!';setTimeout(function(){b.textContent='Скопировать код'},2000)};
+    try{navigator.clipboard.writeText(c.textContent).then(done,function(){sel()})}catch(e){sel()}
+    function sel(){var r=document.createRange();r.selectNodeContents(c);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Выделено, нажмите «Копировать»'}
+  });
+});
+</script>
+</body>
+</html>
